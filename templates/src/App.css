@@ -1,0 +1,60 @@
+/* Estilo global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+}
+
+/* Estilo do corpo da página */
+body, html, #root {
+    background-color: #333652; /* Cor de fundo principal */
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contêiner principal da aplicação */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+/* Título da página */
+h1 {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Links de navegação */
+a {
+    color: #e0f0ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para contêineres de conteúdo (caso necessário) */
+.section {
+    margin: 20px 0;
+}
+
+/* Imagens do logo */
+.logo {
+    width: 80px;
+    margin-bottom: 20px;
+}
