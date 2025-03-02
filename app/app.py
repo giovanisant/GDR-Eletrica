@@ -6,6 +6,7 @@ from werkzeug.security import check_password_hash  # Importa para verificação 
 
 app = Flask(__name__)
 
+
 # Configuração do banco de dados
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
