@@ -2,8 +2,6 @@ from app import app
 from flask import request, jsonify
 from app.models.usuario import Usuario
 
-#teste
-
 # Rota para login do usuário
 @app.route('/api/login', methods=['POST'])
 def login_usuario():
