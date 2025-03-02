@@ -1,8 +1,5 @@
-# models.py
-
 from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from app.app_factory import db
 
 class Usuario(db.Model):
     __tablename__ = 'tbl_usuarios'  # Nome correto da tabela no banco de dados
