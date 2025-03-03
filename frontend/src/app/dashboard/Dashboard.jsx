@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.css';
-import Logo from '../../public/logo.png';
+import Logo from '../../../public/logo.png';
 
 const Dashboard = () => {
     const [userName, setUserName] = useState('');

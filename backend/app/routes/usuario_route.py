@@ -1,26 +1,10 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-from config import DATABASE_URI
-from models import db, Usuario
-from werkzeug.security import check_password_hash  # Importa para verificação de senha
+from app.app_factory import create_app
+from flask import request, jsonify, Blueprint
+from app.models.usuario_model import Usuario
+from app.app_factory import db
 
-app = Flask(__name__)
-
-
-# Configuração do banco de dados
-app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# Inicializando o banco de dados
-db.init_app(app)
-
-# Habilitar CORS para o frontend no localhost:5173
-CORS(app, origins=["http://localhost:5173"], allow_headers=["Content-Type", "Authorization"])
-
-@app.route('/')
-def home():
-    return 'Bem-vindo à API!'
-
+app = create_app()
+bp = Blueprint('usuario', __name__)
 # Rota para login do usuário
 @app.route('/api/login', methods=['POST'])
 def login_usuario():
@@ -55,10 +39,8 @@ def login_usuario():
 
     except Exception as e:
         return jsonify({"message": f"Erro ao realizar login: {str(e)}"}), 500
-
-
-# Rota GET para listar todos os usuários
-@app.route('/api/usuarios', methods=['GET'])
+    
+@bp.route('/api/usuarios', methods=['GET'])
 def listar_usuarios():
     try:
         usuarios = Usuario.query.all()  # Consulta todos os usuários
@@ -69,10 +51,7 @@ def listar_usuarios():
     except Exception as e:
         return jsonify({"message": f"Erro ao listar os usuários: {str(e)}"}), 500
 
-# Rota para criar um novo usuário
-# Arquivo da API
-
-@app.route('/api/usuarios', methods=['POST'])
+@bp.route('/api/usuarios', methods=['POST'])
 def criar_usuario():
     try:
         dados = request.get_json()
@@ -103,7 +82,7 @@ def criar_usuario():
             senha_usuario=dados['senha_usuario'],
             cargo_usuario=dados['cargo_usuario'],
             cpf_usuario=dados.get('cpf_usuario'),
-            tipo_usuario=dados['tipo_usuario']
+            tipo_usuario=dados.get('tipo_usuario')
         )
 
         # Salvando o novo usuário no banco de dados
@@ -118,6 +97,3 @@ def criar_usuario():
         db.session.rollback()
         print(f"Erro ao salvar no banco de dados: {str(e)}")
         return jsonify({"message": f"Erro ao cadastrar o usuário: {str(e)}"}), 400
-
-if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=5000)

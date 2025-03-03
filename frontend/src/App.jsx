@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import UserOptions from './components/UserOptions';
-import UserRegistration from './components/UserRegistration';
-import RegisteredUsers from './components/RegisteredUsers';
-import LoginUser from './components/LoginUser';
-import RedefineUser from './components/RedefineUser';
+import Dashboard from './app/dashboard/Dashboard';
+import UserOptions from './app/configuracoes/UserOptions';
+import UserRegistration from './app/usuarios/novousuario/UserRegistration';
+import RegisteredUsers from './app/usuarios/RegisteredUsers';
+import LoginUser from './app/login/LoginUser';
+import RedefineUser from './app/usuarios/editarusuario/RedefineUser';
 
 const App = () => {
     return (
