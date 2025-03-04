@@ -6,6 +6,7 @@ import UserRegistration from './app/usuarios/novousuario/UserRegistration';
 import RegisteredUsers from './app/usuarios/RegisteredUsers';
 import LoginUser from './app/login/LoginUser';
 import RedefineUser from './app/usuarios/editarusuario/RedefineUser';
+import Clientes from './app/clientes/Clientes';
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
                 <Route path="/user-options" element={<UserOptions />} />
                 <Route path="/users" element={<UserRegistration />} />
                 <Route path="/registered-users" element={<RegisteredUsers />} />
+                <Route path="/clientes" element={<Clientes />} />
             </Routes>
         </Router>
     );
