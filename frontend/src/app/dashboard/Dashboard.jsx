@@ -36,7 +36,7 @@ const Dashboard = () => {
             </div>
             <div className="button-grid">
                 <Link to="/user-options" className="dashboard-button">Usuários</Link>
-                <Link to="/clients" className="dashboard-button">Clientes</Link>
+                <Link to="/clients-options" className="dashboard-button">Clientes</Link>
                 <Link to="/appointments" className="dashboard-button secondary">Agendamentos</Link>
                 <Link to="/reports" className="dashboard-button secondary">Relatórios</Link>
                 <Link to="/services" className="dashboard-button secondary">Serviços</Link>

@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './app/dashboard/Dashboard';
-import UserOptions from './app/configuracoes/UserOptions';
+import UserOptions from './app/usuarios/userOptions/UserOptions';
 import UserRegistration from './app/usuarios/novousuario/UserRegistration';
 import RegisteredUsers from './app/usuarios/RegisteredUsers';
 import LoginUser from './app/login/LoginUser';
 import RedefineUser from './app/usuarios/editarusuario/RedefineUser';
 import Clientes from './app/clientes/Clientes';
+import ClientesOptions from './app/clientes/clientesOptions/clientesOptions';
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                 <Route path="/users" element={<UserRegistration />} />
                 <Route path="/registered-users" element={<RegisteredUsers />} />
                 <Route path="/clientes" element={<Clientes />} />
+                <Router path="/clientes-options" element={<ClientesOptions />} />
             </Routes>
         </Router>
     );
