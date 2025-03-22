@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.css';
-import Logo from '../../../public/logo.png';
+import Logo from '../../../public/assets/imagens/logo.png';
+import Profile from '../../../public/assets/imagens/profile-icon.png';
 
 const Dashboard = () => {
     const [userName, setUserName] = useState('');
@@ -28,7 +29,7 @@ const Dashboard = () => {
             </div>
             <Link to="/" className="back-button">← Sair</Link>
             <div className="profile">
-                <img src="profile-icon.png" alt="Profile Icon" className="profile-pic" />
+                <img src={Profile} alt="Profile Icon" className="profile-pic" />
                 <div className="profile-info">
                     <h3>{userName}</h3>  {/* Exibe o nome do usuário */}
                     <p>{userRole}</p>  {/* Exibe o cargo do usuário */}

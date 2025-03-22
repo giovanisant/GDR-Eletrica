@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ClientesOptions.css';
 import { Link } from 'react-router-dom';
+import Logo from '../../../../public/assets/imagens/logo.png';
 
 const ClientesOptions = () => {
     const navigate = useNavigate();
@@ -17,11 +18,10 @@ const ClientesOptions = () => {
     return (
         <div className="clientes-options">
             <div className='return-options'>
-                <Link to="/home">←
-                Voltar</Link>
+                <Link to="/home">← Voltar</Link>
             </div>
             <div className="header">
-                <img src="logo.png" alt="GDG Elétrica Logo" className="logo" />
+                <img src={Logo} alt="Logo" />
             </div>
             
             <div className='options'>

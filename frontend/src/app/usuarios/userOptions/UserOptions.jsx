@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import './UserOptions.css';
 import { Link } from 'react-router-dom';
+import Logo from '../../../../public/assets/imagens/logo.png';
 
 const UserOptions = () => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const UserOptions = () => {
                 Voltar</Link>
             </div>
             <div className="header">
-                <img src="logo.png" alt="GDG Elétrica Logo" className="logo" />
+                <img src={Logo} alt="Logo" />
             </div>
             
             <div className='options'>

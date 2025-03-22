@@ -54,6 +54,7 @@
 
 .button-login > button:hover {
     background-color: #79c7ff;
+    cursor: pointer;
 }
 
 .img > img {
