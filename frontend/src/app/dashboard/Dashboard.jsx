@@ -37,10 +37,10 @@ const Dashboard = () => {
             </div>
             <div className="button-grid">
                 <Link to="/user-options" className="dashboard-button">Usuários</Link>
-                <Link to="/clients-options" className="dashboard-button">Clientes</Link>
-                <Link to="/appointments" className="dashboard-button secondary">Agendamentos</Link>
+                <Link to="/clientes-options" className="dashboard-button">Clientes</Link>
+                <Link to="/agendamentos-options" className="dashboard-button secondary">Agendamentos</Link>
                 <Link to="/reports" className="dashboard-button secondary">Relatórios</Link>
-                <Link to="/services" className="dashboard-button secondary">Serviços</Link>
+                <Link to="servicos" className="dashboard-button secondary">Serviços</Link>
                 <Link to="/settings" className="dashboard-button secondary">Configurações</Link>
             </div>
         </div>

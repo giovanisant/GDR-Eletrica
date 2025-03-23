@@ -1,22 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './ClientesOptions.css';
+import './AppointmentsOptions.css';
 import { Link } from 'react-router-dom';
 import Logo from '../../../../public/assets/imagens/logo.png';
 
-const ClientesOptions = () => {
+const AppointmentsOptions = () => {
     const navigate = useNavigate();
 
     function navigateToNewClient() {
-        navigate('/novo-cliente');
+        navigate('/novo-agendamento');
     }
 
     function navigateToRegisteredClients() {
-        navigate('/clientes');
+        navigate('/agendamentos');
     };
 
     return (
-        <div className="clientes-options">
+        <div className="agendamento-options">
             <div className='return-options'>
                 <Link to="/home">← Voltar</Link>
             </div>
@@ -26,11 +26,11 @@ const ClientesOptions = () => {
             
             <div className='options'>
                 <h1>Clientes</h1>
-                <button className="option-button" onClick={navigateToNewClient}>Novo Cliente</button>
-                <button className="option-button" onClick={navigateToRegisteredClients}>Cadastrados</button>
+                <button className="option-button" onClick={navigateToNewClient}>Novo Agendamento</button>
+                <button className="option-button" onClick={navigateToRegisteredClients}>Agendamentos</button>
             </div>
         </div>
     );
 }
 
-export default ClientesOptions;
+export default AppointmentsOptions;
