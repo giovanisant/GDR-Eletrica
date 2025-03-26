@@ -40,7 +40,7 @@ const Dashboard = () => {
                 <Link to="/clientes-options" className="dashboard-button">Clientes</Link>
                 <Link to="/agendamentos-options" className="dashboard-button secondary">Agendamentos</Link>
                 <Link to="/reports" className="dashboard-button secondary">Relatórios</Link>
-                <Link to="servicos" className="dashboard-button secondary">Serviços</Link>
+                <Link to="/servicos" className="dashboard-button secondary">Serviços</Link>
                 <Link to="/settings" className="dashboard-button secondary">Configurações</Link>
             </div>
         </div>

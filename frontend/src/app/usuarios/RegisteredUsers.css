@@ -1,16 +1,19 @@
 /* RegisteredUsers.css */
 
 .back-registered {
-    padding: 30px;
+    padding: 20px;
+}
+
+.registered-container {
+    height: 100%;
 }
 
 .registered-users-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    gap: 5px;
     height: 90%;
-    
 }
 
 .usuario-card {
