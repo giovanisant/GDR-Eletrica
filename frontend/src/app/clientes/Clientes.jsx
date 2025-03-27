@@ -30,7 +30,7 @@ function Clientes() {
 
     return (
         <div className="clientes-container">
-            <Link to="/client-options" className="back-clientes">← Voltar</Link>
+            <Link to="/clientes-options" className="back-clientes">← Voltar</Link>
             <div className="clientes-container">
                 <h2>Clientes Cadastrados</h2>
                 {clientes.length > 0 ? (
