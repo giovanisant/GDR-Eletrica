@@ -1,99 +1,76 @@
-from app.app_factory import create_app
-from flask import request, jsonify, Blueprint
-from app.models.usuario_model import Usuario
-from app.app_factory import db
+# app/routes/usuario_routes.py
+from flask import Blueprint, request, jsonify
+# from werkzeug.security import check_password_hash, generate_password_hash
+from app.models.usuario_model import Usuario, db
 
-app = create_app()
-bp = Blueprint('usuario', __name__)
+usuario_bp = Blueprint('usuario_bp', __name__)
+
 # Rota para login do usuário
-@app.route('/api/login', methods=['POST'])
+@usuario_bp.route('/api/login', methods=['POST'])
 def login_usuario():
     try:
-        dados = request.get_json()  # Recebe os dados do corpo da requisição
+        dados = request.get_json()
         email = dados.get('email_usuario')
         senha = dados.get('senha_usuario')
 
-        # Verifica se o email e a senha foram fornecidos
         if not email or not senha:
             return jsonify({"message": "Email e senha são obrigatórios!"}), 400
 
-        # Consulta o banco de dados para encontrar o usuário com o email fornecido
         usuario = Usuario.query.filter_by(email_usuario=email).first()
-
-        # Verifica se o usuário foi encontrado
         if not usuario:
             return jsonify({"message": "Usuário não encontrado!"}), 404
 
-        # Verifica se a senha fornecida corresponde à senha armazenada no banco
-        # Aqui usamos check_password_hash apenas se a senha estiver hashada
-        if usuario.senha_usuario != senha:  # Substitua por check_password_hash caso utilize hashing
+        # if not check_password_hash(usuario.senha_usuario, senha):  # Verificação de senha
             return jsonify({"message": "Senha incorreta!"}), 401
 
-        # Aqui você pode gerar um token JWT para autenticação, por exemplo
-        # Fornecerei apenas uma resposta simples por agora
         return jsonify({
-                "message": "Login bem-sucedido",
-                "nome_usuario": usuario.nome_usuario,
-                "cargo_usuario": usuario.cargo_usuario,
-            }), 200
+            "message": "Login bem-sucedido",
+            "nome_usuario": usuario.nome_usuario,
+            "cargo_usuario": usuario.cargo_usuario,
+        }), 200
 
     except Exception as e:
         return jsonify({"message": f"Erro ao realizar login: {str(e)}"}), 500
-    
-@bp.route('/api/usuarios', methods=['GET'])
+
+
+# Rota GET para listar todos os usuários
+@usuario_bp.route('/api/usuarios', methods=['GET'])
 def listar_usuarios():
     try:
-        usuarios = Usuario.query.all()  # Consulta todos os usuários
+        usuarios = Usuario.query.all()
         if not usuarios:
             return jsonify({"message": "Nenhum usuário encontrado"}), 404
-        usuarios_json = [usuario.to_dict() for usuario in usuarios]  # Usando o método to_dict
+        usuarios_json = [usuario.to_dict() for usuario in usuarios]
         return jsonify(usuarios_json), 200
     except Exception as e:
         return jsonify({"message": f"Erro ao listar os usuários: {str(e)}"}), 500
 
-@bp.route('/api/usuarios', methods=['POST'])
+
+# Rota para criar um novo usuário
+@usuario_bp.route('/api/usuarios', methods=['POST'])
 def criar_usuario():
     try:
         dados = request.get_json()
-        print('Dados recebidos:', dados)
 
         if not all(dados.get(campo) for campo in ["nome_usuario", "email_usuario", "tel_usuario", "senha_usuario", "cargo_usuario", "cpf_usuario", "tipo_usuario"]):
-            print("Campos obrigatórios ausentes")
             return jsonify({"message": "Dados inválidos ou em formato incorreto"}), 400
 
-        # Extraindo dados na ordem do banco de dados
-        nome_usuario = dados.get('nome_usuario')
-        email_usuario = dados.get('email_usuario')
-        tel_usuario = dados.get('tel_usuario')
-        senha_usuario = dados.get('senha_usuario')
-        cargo_usuario = dados.get('cargo_usuario')
-        cpf_usuario = dados.get('cpf_usuario')
-        tipo_usuario = dados.get('tipo_usuario')
+        senha_hash = generate_password_hash(dados['senha_usuario'])
 
-        # Validação dos campos obrigatórios
-        if not nome_usuario or not email_usuario or not tel_usuario or not senha_usuario or not cargo_usuario or not cpf_usuario or not tipo_usuario:
-            return jsonify({"message": "Todos os campos são obrigatórios!"}), 400
-
-        # Criando nova instância de Usuario
         novo_usuario = Usuario(
             nome_usuario=dados['nome_usuario'],
-            email_usuario=dados.get('email_usuario'),
-            tel_usuario=dados.get('tel_usuario'),
-            senha_usuario=dados['senha_usuario'],
+            email_usuario=dados['email_usuario'],
+            tel_usuario=dados['tel_usuario'],
+            senha_usuario=senha_hash,
             cargo_usuario=dados['cargo_usuario'],
-            cpf_usuario=dados.get('cpf_usuario'),
-            tipo_usuario=dados.get('tipo_usuario')
+            cpf_usuario=dados['cpf_usuario'],
+            tipo_usuario=dados['tipo_usuario']
         )
 
-        # Salvando o novo usuário no banco de dados
-        print("Adicionando ao banco de dados...")
         db.session.add(novo_usuario)
         db.session.commit()
-        print("Usuário salvo com sucesso!")
-
         return jsonify({"message": "Usuário cadastrado com sucesso!"}), 201
 
     except Exception as e:
         db.session.rollback()
-        print(f"Erro ao salvar no banco de dados: {str(e)}")
         return jsonify({"message": f"Erro ao cadastrar o usuário: {str(e)}"}), 400
