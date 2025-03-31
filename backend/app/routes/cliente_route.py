@@ -1,5 +1,5 @@
 # app/routes/cliente_routes.py
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, Response, request, jsonify
 from app.models.cliente_model import Cliente, db
 
 cliente_bp = Blueprint('cliente_bp', __name__)
@@ -35,7 +35,7 @@ def listar_clientes():
     try:
         clientes = Cliente.query.all()
         if not clientes:
-            return jsonify({"message": "Nenhum cliente encontrado"}), 404
+            return Response({"Error": "Nenhum cliente encontrado"}, status=404)
         clientes_json = [cliente.to_dict() for cliente in clientes]
         return jsonify(clientes_json), 200
     except Exception as e:

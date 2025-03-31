@@ -2,33 +2,32 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Clientes.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Loading } from '../../components/Loading/index';
 
 function Clientes() {
     const [clientes, setClientes] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
-    useEffect(() => {
-        axios.get("http://127.0.0.1:5000/api/clientes") // A URL da sua API
-        .then((response) => {
+    const getClientes = async () => {
+        setLoading(true);
+        const response = await axios.get("http://127.0.0.1:5000/api/clientes") // A URL da sua API
+        if(response) {
             setClientes(response.data);
             setLoading(false);
-        })
-        .catch(error => {
-            setError('Erro ao carregar os dados');
-            setLoading(false);  
-        })
-    }, [])
-
-    if (loading) {
-        return <p>Carregando...</p>;
+            toast.success('Dados carregados com sucesso!');
+        }
+        toast.error('Erro ao carregar os dados');
+        setLoading(false);  
     }
 
-    if (error) {
-        return <p>{error}</p>;
-    }
+    useEffect(() => {
+        getClientes();
+    },[])
 
     return (
+        <>
+        {loading && <Loading />}
         <div className="clientes-container">
             <Link to="/clientes-options" className="back-clientes">← Voltar</Link>
             <div className="clientes-container">
@@ -46,6 +45,7 @@ function Clientes() {
                 )}
             </div>
         </div>
+        </>
     )
 }
 
