@@ -1,7 +1,7 @@
 // src/components/RegisteredUsers.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './RegisteredUsers.css'; // Se você tiver um arquivo de estilo CSS
+import styles from './RegisteredUsers.module.css'; // Se você tiver um arquivo de estilo CSS
 import { Link } from 'react-router-dom';
 
 function RegisteredUsers() {
@@ -32,22 +32,26 @@ function RegisteredUsers() {
     }
 
     return (
-        <div className='registered-container'>
-            <Link to="/user-options" className="back-registered">← Voltar</Link>
-            <div className="registered-users-container">
+        <div className={styles.registeredContainer}>
+            <div className={styles.backRegistered}>
+                <Link to="/user-options" >← Voltar</Link>
+            </div>
                 <h2>Usuários Cadastrados</h2>
-                {usuarios.length > 0 ? (
-                    usuarios.map(usuario => (
-                        <div key={usuario.id_usuario} className="usuario-card">
-                            <h3>{usuario.nome_usuario}</h3>
-                            <p>Email: {usuario.email_usuario}</p>
-                            <p>Cargo: {usuario.cargo_usuario}</p>
-                            <p>Telefone: {usuario.tel_usuario}</p>
-                        </div>
-                    ))
-                ) : (
-                    <p>Nenhum usuário encontrado.</p>
-                )}
+            <div className={styles.container}>
+                <div className={styles.registeredUsersContainer}>
+                    {usuarios.length > 0 ? (
+                        usuarios.map(usuario => (
+                            <div key={usuario.id_usuario} className={styles.usuarioCard}>
+                                <h3>{usuario.nome_usuario}</h3>
+                                <p>Email: {usuario.email_usuario}</p>
+                                <p>Cargo: {usuario.cargo_usuario}</p>
+                                <p>Telefone: {usuario.tel_usuario}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p>Nenhum usuário encontrado.</p>
+                    )}
+                </div>
             </div>
         </div>
     );
