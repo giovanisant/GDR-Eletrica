@@ -32,7 +32,6 @@ const LoginUser = () => {
     
             // Se a autenticação for bem-sucedida
             const data = await response.json();
-            console.log('Login bem-sucedido', data);
     
             // Armazenar o nome e o cargo do usuário no sessionStorage ou localStorage
             localStorage.setItem('nome_usuario', data.nome_usuario);

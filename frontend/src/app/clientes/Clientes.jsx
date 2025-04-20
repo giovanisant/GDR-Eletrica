@@ -7,7 +7,7 @@ import { Loading } from '../../components/Loading/index';
 
 function Clientes() {
     const [clientes, setClientes] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const getClientes = async () => {
         setLoading(true);
