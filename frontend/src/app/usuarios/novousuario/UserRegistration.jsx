@@ -3,7 +3,7 @@ import axios from 'axios';
 import './UserRegistration.css';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Loading } from '../../components/Loading/index';
+import { Loading } from '../../../components/Loading/index';
 
 const UserRegistration = () => {
     const [formData, setFormData] = useState({
@@ -16,7 +16,7 @@ const UserRegistration = () => {
         tipo_usuario: '',
     });
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [loading, setLoading] = useState('');
     const [error, setError] = useState(null); // Para capturar erros
 
@@ -26,6 +26,7 @@ const UserRegistration = () => {
     };
 
     const handleSubmit = async (e) => {
+        setIsLoading(true);
         e.preventDefault();
 
         for (let key in formData) {
@@ -35,13 +36,12 @@ const UserRegistration = () => {
             }
         }
 
-        setIsLoading(true);
 
         try{
             const response = await axios.post('http://127.0.0.1:5000/api/usuarios', formData, {
                 headers: { 'Content-Type': 'application/json' }
             });
-            
+
             toast.success('Usuário cadastrado com sucesso')
             
             // Resetando o formulário
@@ -61,7 +61,6 @@ const UserRegistration = () => {
             setLoading(false);
         }
     };
-
 
     return (
         <>
@@ -125,6 +124,7 @@ const UserRegistration = () => {
                                 value={formData.cpf_usuario}
                                 onChange={handleChange}
                                 required
+                                isCPF
                             />
                         </div>
                         <div className="form-row">
