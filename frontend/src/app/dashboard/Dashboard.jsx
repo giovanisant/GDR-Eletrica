@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Dashboard.css';
+import styles from './Dashboard.module.css';
 import Logo from '../../../public/assets/imagens/logo.png';
 import Profile from '../../../public/assets/imagens/profile-icon.png';
 
@@ -23,25 +23,28 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div className="dashboard-container">
-            <div className="header">
-                <img src={Logo} alt="GDG Elétrica Logo" className="logo" />
-            </div>
-            <Link to="/" className="back-button">← Sair</Link>
-            <div className="profile">
-                <img src={Profile} alt="Profile Icon" className="profile-pic" />
-                <div className="profile-info">
-                    <h3>{userName}</h3>  {/* Exibe o nome do usuário */}
-                    <p>{userRole}</p>  {/* Exibe o cargo do usuário */}
+        <div className={styles.background}>
+            <div className={styles.dashboardContainer}>
+                <div className={styles.header}>
+                    <Link to="/" className={styles.backButton}>← Sair</Link>
+                    <img src={Logo} alt="GDG Elétrica Logo" className={styles.logo} />
                 </div>
-            </div>
-            <div className="button-grid">
-                <Link to="/user-options" className="dashboard-button">Usuários</Link>
-                <Link to="/clientes-options" className="dashboard-button">Clientes</Link>
-                <Link to="/agendamentos-options" className="dashboard-button secondary">Agendamentos</Link>
-                <Link to="/reports" className="dashboard-button secondary">Relatórios</Link>
-                <Link to="/servicos" className="dashboard-button secondary">Serviços</Link>
-                <Link to="/settings" className="dashboard-button secondary">Configurações</Link>
+                
+                <div className={styles.profile}>
+                    <img src={Profile} alt="Profile Icon" className={styles.profilePic} />
+                    <div className={styles.profileInfo}>
+                        <h3>{userName}</h3>  {/* Exibe o nome do usuário */}
+                        <p>{userRole}</p>  {/* Exibe o cargo do usuário */}
+                    </div>
+                </div>
+                <div className={styles.buttonGrid}>
+                    <Link to="/user-options" className={styles.dashboardButton}>Usuários</Link>
+                    <Link to="/clientes-options" className={styles.dashboardButton}>Clientes</Link>
+                    <Link to="/agendamentos-options" className={styles.dashboardButton}>Agendamentos</Link>
+                    <Link to="/reports" className={styles.dashboardButton}>Relatórios</Link>
+                    <Link to="/servicos" className={styles.dashboardButton}>Serviços</Link>
+                    <Link to="/settings" className={styles.dashboardButton}>Configurações</Link>
+                </div>
             </div>
         </div>
     );

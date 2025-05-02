@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './LoginUser.css';
+import styles from './LoginUser.module.css';
 import Logo from '../../../public/assets/imagens/logo.png';
 import { Link } from 'react-router-dom';
 
@@ -45,38 +45,37 @@ const LoginUser = () => {
     };
 
     return (
-        <div className="login">
-            <form onSubmit={handleSubmit} className="form-login">
-                <h1>Login</h1>
-                <div className="user-login">
-                    <input
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        placeholder="Email"
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        placeholder="Senha"
-                    />
-                    <Link to="/redefine" className="link">
-                        Esqueci a senha
-                    </Link>
-                </div>
+        <div className={styles.background}>
+            <div className={styles.container}>
+                <form className={styles.formLogin}>
+                    <h1>Login</h1>
 
-                <div className="button-login">
-                    <button type="submit">Entrar</button>
+                        <input
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            placeholder="Email"
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            placeholder="Senha"
+                        />
+                    {error && <p className={styles.error}>{error}</p>} {/* Exibe erro caso haja */}
+                </form>
+                <div className={styles.sendLogin}>
+                    <div className={styles.buttonLogin} onClick={handleSubmit}>
+                        <p>Entrar</p>
+                    </div>
                 </div>
-                {error && <p className="error">{error}</p>} {/* Exibe erro caso haja */}
-            </form>
-            <div className="img">
-                <img src={Logo} alt="Logo" />
+            </div>
+            <div className={styles.img}>
+                <img src={Logo} alt="Logo"  className={styles.imagem}/>
             </div>
         </div>
     );

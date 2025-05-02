@@ -1,0 +1,85 @@
+.background {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+}
+
+.conatiner {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    height: 70vh;
+    align-items: center;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    background-color: #5083EB;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 10px;
+    gap: 10px;
+    box-shadow: 8px 8px 8px 4px rgba(43, 43, 43, 0.397);
+}
+
+.formLogin > input {
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 5px;
+    width: 350px;
+}
+
+.form-login > h1 {
+    padding: 5px;
+    margin: 10px;
+    font-size: 2.5em;
+}
+
+.sendLogin {
+    display: flex;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.buttonLogin {
+    display: flex;
+    background-color: #aecbec;
+    font-size: 18px;
+    border-radius: 20px;
+    height: 50px;
+    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+    color: #2c2f5e;
+    transition: background-color 0.3s;
+    box-shadow: 5px 10px 5px 5px rgba(43, 43, 43, 0.397);
+}
+
+.buttonLogin:hover {
+    background-color: #79c7ff;
+    box-shadow: none;
+}
+
+.img {
+    padding-left: 50px;
+}
+
+@media (width < 1000px) {
+    .background {
+        flex-direction: column;
+    }
+    .formLogin > input {
+        width: 280px;
+    }
+    .img {
+        padding-left: 0px;
+    }
+    .imagem {
+        width: 300px;
+    }
+}
