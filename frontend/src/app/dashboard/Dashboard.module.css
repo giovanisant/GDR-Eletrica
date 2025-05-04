@@ -15,12 +15,16 @@
     width: 90vw;
 }
 
+.returnOptions {
+    display: flex;
+    padding-bottom: 10px;
+}
+
 .header {
     display: flex;
-    align-items: center;
-    justify-items: center;
+    justify-items: flex-start;
     width: 100%;
-    column-gap: 40%;
+    margin-bottom: 20px;
 }
 
 .logo {
@@ -94,6 +98,9 @@ h1 {
 }
 
 
-@media (width < 1000) {
-    
+@media (width < 1000px) {
+    .buttonGrid {
+        display: flex;
+        flex-direction: column;
+    }
 }

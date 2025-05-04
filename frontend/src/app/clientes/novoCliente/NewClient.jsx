@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import './NewClient.css';
+import styles from './NewClient.module.css';
 import { Link } from 'react-router-dom';
 
 const NewClient = () => {
@@ -58,54 +58,58 @@ const NewClient = () => {
     };
 
     return (
-        <div className='container-registration'>
-            <Link to="/clientes-options" className="back-registration">← Voltar</Link>
-            <div className="client-registration-container">
-                <h2>Novo Cliente</h2>
-                {error && <div className="error-message">{error}</div>}
-                <form onSubmit={handleSubmit} className="client-registration-form">
-                    <div className="form-row">
-                        <input
-                            type="text"
-                            name="nome_cliente"
-                            placeholder="Nome Completo"
-                            value={formData.nome_cliente}
-                            onChange={handleChange}
-                            required
-                        />
-                        <input
-                            type="email"
-                            name="email_cliente"
-                            placeholder="E-mail"
-                            value={formData.email_cliente}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="form-row">
-                        <input
-                            type="text"
-                            name="tel_cliente"
-                            placeholder="Telefone"
-                            value={formData.tel_cliente}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="form-row">
-                        <input
-                            type="number"
-                            name="cpf_cliente"
-                            placeholder="CPF"
-                            value={formData.cpf_cliente}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <button type="submit" className="submit-button" disabled={loading}>
-                        {loading ? 'Cadastrando...' : 'Cadastrar'}
-                    </button>
-                </form>
+        <div className={styles.background}>
+            <div className={styles.containerRegistration}>
+                <div className={styles.header}>
+                    <Link to="/clientes-options" className={styles.backRegistration}>← Voltar</Link>
+                </div>
+                <div className={styles.clientRegistrationContainer}>
+                    <h2>Novo Cliente</h2>
+                    {error && <div className={styles.errorMessage}>{error}</div>}
+                    <form onSubmit={handleSubmit} className={styles.clientRegistrationForm}>
+                        <div className={styles.formRow}>
+                            <input
+                                type="text"
+                                name="nome_cliente"
+                                placeholder="Nome Completo"
+                                value={formData.nome_cliente}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input
+                                type="email"
+                                name="email_cliente"
+                                placeholder="E-mail"
+                                value={formData.email_cliente}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className={styles.formRow}>
+                            <input
+                                type="text"
+                                name="tel_cliente"
+                                placeholder="Telefone"
+                                value={formData.tel_cliente}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className={styles.formRow}>
+                            <input
+                                type="number"
+                                name="cpf_cliente"
+                                placeholder="CPF"
+                                value={formData.cpf_cliente}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <button type="submit" className={styles.submitButton} disabled={loading}>
+                            {loading ? 'Cadastrando...' : 'Cadastrar'}
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     );

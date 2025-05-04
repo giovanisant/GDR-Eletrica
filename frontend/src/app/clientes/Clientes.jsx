@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import styles from "./Clientes.module.css";
+import styles from './clientes.module.css';
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Loading } from '../../components/Loading/index';
@@ -29,22 +29,24 @@ function Clientes() {
         <>
         {loading && <Loading />}
         <div className={styles.background}>
-            <div className={styles.backClientes}>
-                <Link to="/clientes-options">← Voltar</Link>
-            </div>
-            <h2>Clientes Cadastrados</h2>
-            <div className={styles.clientesContainer}>
-                {clientes.length > 0 ? (
-                    clientes.map(cliente => (
-                        <div key={cliente.id_cliente} className={styles.clienteCard}>
-                            <h3>{cliente.nome_cliente}</h3>
-                            <p>Email: {cliente.email_cliente}</p>
-                            <p>Telefone: {cliente.tel_cliente}</p>
-                        </div>
-                    ))
-                ) : (
-                    <p>Nenhum cliente encontrado.</p>
-                )}
+            <div className={styles.container}>
+                <div className={styles.backClientes}>
+                    <Link to="/clientes-options">← Voltar</Link>
+                </div>
+                <h2>Clientes Cadastrados</h2>
+                <div className={styles.clientesContainer}>
+                    {clientes.length > 0 ? (
+                        clientes.map(cliente => (
+                            <div key={cliente.id_cliente} className={styles.clienteCard}>
+                                <h3>{cliente.nome_cliente}</h3>
+                                <p>Email: {cliente.email_cliente}</p>
+                                <p>Telefone: {cliente.tel_cliente}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p>Nenhum cliente encontrado.</p>
+                    )}
+                </div>
             </div>
         </div>
         </>

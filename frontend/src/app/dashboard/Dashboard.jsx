@@ -25,8 +25,10 @@ const Dashboard = () => {
     return (
         <div className={styles.background}>
             <div className={styles.dashboardContainer}>
+                <div className={styles.returnOptions}>
+                    <Link to="/">← Sair</Link>
+                </div>
                 <div className={styles.header}>
-                    <Link to="/" className={styles.backButton}>← Sair</Link>
                     <img src={Logo} alt="GDG Elétrica Logo" className={styles.logo} />
                 </div>
                 

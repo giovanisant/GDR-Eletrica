@@ -1,0 +1,71 @@
+.background {
+    display: flex;
+    width: 90vw;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.clientesOptions {
+    display: flex;
+    flex-direction: column;
+    background-color: #333652;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.returnOptions {
+    display: flex;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.img {
+    width: 150px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.optionButton {
+    border-radius: 20px;
+    background-color: #aecbec;
+    color: #2c2f5e; 
+    font-size: 18px; 
+    font-weight: bold;
+    text-align: center; 
+    text-decoration: none; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    height: 50px;
+    width: 350px;
+    transition: background-color 0.3s;
+    box-shadow: 3px 5px 3px 3px rgba(43, 43, 43, 0.397);
+    cursor: pointer;
+}
+
+.optionButton:hover {
+    background-color: #79c7ff;
+    box-shadow: none;
+    text-decoration: none;
+}

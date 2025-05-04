@@ -1,23 +1,34 @@
 .background {
     display: flex;
+    width: 100vw;
+    height: 80vh;
+    justify-content: center;
     align-items: center;
+}
+
+.container {
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    width: 100vw;
 }
 
 .backClientes {
     display: flex;
-    padding: 20px;
-    width: 100%;
+    justify-content: flex-start;
+    padding-bottom: 30px;
+    width: 60%;
 }
 
 .clientesContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 5px;
+    margin-top: 20px;
     height: 100%;
-    margin-top: 30px;
-    min-width: 1050px;
+    width: 60%;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -59,3 +70,15 @@
     color: #bfc9d0;
 }
 
+@media (width < 1000px) {
+    .backClientes {
+        width: 65%;
+    }
+    .clienteCard {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        height: 160px;
+    }
+}

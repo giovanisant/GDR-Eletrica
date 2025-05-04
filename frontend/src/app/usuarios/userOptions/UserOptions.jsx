@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import './UserOptions.css';
+import styles from './UserOptions.module.css';
 import { Link } from 'react-router-dom';
 import Logo from '../../../../public/assets/imagens/logo.png';
 
@@ -16,19 +16,21 @@ const UserOptions = () => {
     };
 
     return (
-        <div className="user-options">
-            <div className='return-options'>
-                <Link to="/home">←
-                Voltar</Link>
-            </div>
-            <div className="header">
-                <img src={Logo} alt="Logo" />
-            </div>
+        <div className={styles.background}>
+            <div className={styles.userOptions}>
+                <div className={styles.returnOptions}>
+                    <Link to="/home">←
+                    Voltar</Link>
+                </div>
+                <div className={styles.header}>
+                    <img src={Logo} alt="Logo" className={styles.img}/>
+                </div>
             
-            <div className='options'>
-                <h1>Usuários</h1>
-                <button className="option-button" onClick={navigateToNewUser}>Novo Usuário</button>
-                <button className="option-button" onClick={navigateToRegisteredUsers}>Cadastrados</button>
+                <div className={styles.options}>
+                    <h1>Usuários</h1>
+                    <div className={styles.optionButton} onClick={navigateToNewUser}>Novo Usuário</div>
+                    <div className={styles.optionButton} onClick={navigateToRegisteredUsers}>Cadastrados</div>
+                </div>
             </div>
         </div>
     );
