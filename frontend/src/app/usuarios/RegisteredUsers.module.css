@@ -1,0 +1,69 @@
+.registeredContainer {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+.backRegistered {
+    display: flex;
+    padding: 20px;
+    width: 80%;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5px;
+    height: 80vh;
+    width: 90vw;
+}
+
+.registeredUsersContainer {
+    flex-direction: column;
+    gap: 5px;
+    height: 100%;
+    margin-top: 30px;
+    width: 80%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.registeredUsersContainer::-webkit-scrollbar {
+    color: #fff065;
+    border: 0px solid #cccccc;
+    border-radius: 10px;
+    width: 4px;
+}
+
+.usuarioCard {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #abc8e296;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 100px;
+    gap: 20px;
+    color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    grid-template-columns: 35% 35% 30%;
+}
+
+.registeredUsersContainer > h2 {
+    font-size: 2em;
+    margin: 0;
+    padding: 20px;
+    color: #ecf0f1;
+}
+
+.registeredUsersContainer > p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #bfc9d0;
+}

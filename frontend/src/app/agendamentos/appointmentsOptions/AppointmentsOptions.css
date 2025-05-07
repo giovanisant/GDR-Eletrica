@@ -1,0 +1,53 @@
+.agendamento-options {
+    height: 650px;
+    background-color: #333652;
+    color: white;
+}
+.return-options {
+    display: inline-flex;
+    padding-bottom: 50px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.header {
+    justify-content: center;
+    margin-bottom: 10px; /* Espaço abaixo do cabeçalho */
+    padding-top: 20px;
+}
+
+.header > img {
+    width: 120px;
+}
+
+.options {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.option-button {
+    background-color: #aecbec;
+    color: rgb(27, 27, 27);
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    height: 45px;
+    width: 350px;
+}
+
+.option-button:hover {
+    background-color: #79c7ff;
+    text-decoration: solid;
+}
